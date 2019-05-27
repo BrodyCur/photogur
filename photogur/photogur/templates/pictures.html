@@ -12,7 +12,7 @@
   <ul>
     {% for picture in pictures %}
     <li>
-      <img src="{{ picture.url }}">
+      <a href="{% url 'picture_details' id=picture.pk %}"><img src="{{ picture.url }}"></a>
       <p>Title: {{ picture.title }}</p>
       <p>Artist: {{ picture.artist }}</p>
       <p>Comments: {{ picture.comments.count }}</p>
