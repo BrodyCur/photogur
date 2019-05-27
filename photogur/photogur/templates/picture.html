@@ -10,5 +10,11 @@
   <h1>{{ picture.title }}</h1>
   <h2>{{ picture.artist }}</h2>
   <img src="{{ picture.url }}" alt="{{ picture.title }}" />
+  <h5>Comments:</h5>
+  <ul>
+    {% for comment in picture.comments.all %}
+    <li>{{ comment.name }}<br>{{ comment.message }}</li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
