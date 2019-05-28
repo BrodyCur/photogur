@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>{{ picture.title }}</h2>
-  <h3>{{ picture.artist }}</h3>
-  <img src="{{ picture.url }}" alt="{{ picture.title }}" />
-  <h5>Comments:</h5>
-  <ul>
-    {% for comment in picture.comments.all %}
-    <li>{{ comment.name }}<br>{{ comment.message }}</li>
-    {% endfor %}
-  </ul>
+  <h2 class="photo-title">{{ picture.title }}</h2>
+  <h3 class="photo-artist">By: {{ picture.artist }}</h3>
+  <div class="photo-wrapper">
+    <img src="{{ picture.url }}" alt="{{ picture.title }}" />
+  </div>
+  <div class="comments-wrapper">
+    <h5>Comments:</h5>
+    <ul>
+      {% for comment in picture.comments.all %}
+      <li>{{ comment.name }}:<br>{{ comment.message }}<br><br></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <a class="return" href="{% url 'home' %}">Return to Gallery</a>
 {% endblock %}

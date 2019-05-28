@@ -1,5 +1,11 @@
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-header {
@@ -36,6 +42,48 @@
   color: white;
   text-align: center;
   padding: 5px;
+}
+
+.photo-title {
+  margin-left: 25px;
+  color: rgb(105, 104, 103);
+}
+
+.photo-artist {
+  margin-left: 30px;
+  color: rgb(105, 104, 103);
+}
+
+.photo-wrapper {
+  display: inline-block;
+  border: black 1px solid;
+  margin: 0 40px;
+}
+
+.photo-wrapper img {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+.comments-wrapper {
+  margin-left: 40px;
+}
+
+.comments-wrapper ul {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+}
+
+.comments-wrapper li {
+  padding: 10px;
+  margin: 2px;
+}
+
+.return {
+  display: inline-block;
+  margin: 25px;
 }
 
 @media only screen and (min-width: 900px) {
