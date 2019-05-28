@@ -10,26 +10,28 @@
     <h5>Comments:</h5>
     <ul>
       {% for comment in picture.comments.all %}
-      <li>{{ comment.name }}:<br>{{ comment.message }}<br><br></li>
+      <li>{{ comment.name }}:<br>{{ comment.message }} - {{ comment.created_at }}<br></li>
       {% endfor %}
     </ul>
   </div>
 
-  <form action="{% url 'create_comment' %}" method="post">
+  <form class="comment-form" action="{% url 'create_comment' %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="picture" value="{{ picture.pk }}">
 
-    <div class="field">
+    <div class="name-field">
       <label for="comment-name">Name:</label>
       <input id="comment-name" type="text" name='comment-name'>
     </div>
 
-    <div class="field">
+    <div class="comment-field">
       <label for="comment-body">Comment:</label>
       <textarea name="comment-body" id="comment-body" cols="15" rows="3"></textarea>
     </div>
 
-    <input type="submit" value="Post Comment">
+    <input class="submit-comment-button" type="submit" value="Post Comment">
+
+    <input type="hidden" name="date" value="{{ comment.created_at }}">
 
   </form>
 

@@ -15,6 +15,10 @@ html {
   font-family: sans-serif;
 }
 
+.search-bar {
+  margin-bottom: 15px;
+}
+
 .gallery-container ul {
   list-style: none;
   padding: 0;
@@ -86,12 +90,74 @@ html {
   margin: 25px;
 }
 
+.search-header {
+  color: rgb(105, 104, 103); 
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+.search-header span {
+  border-bottom: rgb(105, 104, 103) 3px solid;
+}
+
+.search-container ul {
+  list-style: none;
+}
+
+.search-pic-container {
+  display: block;
+  max-width: 500px;
+  margin: 5px;
+}
+
+.search-container img {
+  max-width: 100%;
+}
+
+.search-container p {
+  color: rgb(105, 104, 103);
+}
+
+.search-title {
+  font-style: italic;
+}
+
+.comment-form {
+  margin: 20px;
+}
+
+.name-field {
+  display: block;
+  padding: 5px;
+}
+
+.comment-field {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+}
+
+.submit-comment-button {
+  margin: 5px;
+}
+
 @media only screen and (min-width: 900px) {
 
   .gallery-container ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 2px;
+  }
+
+  .search-pic-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+  }
+
+  .search-pic-container p {
+    align-self: flex-end;
+    margin-left: 15px;
   }
 
 }
