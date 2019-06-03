@@ -4,6 +4,7 @@ from django.shortcuts import render, reverse, redirect
 from photogur.models import Picture, Comment
 from django.views.decorators.http import require_http_methods
 from photogur.forms import LoginForm
+from django.contrib.auth import authenticate, login
 
 def root(request):
   return HttpResponseRedirect('/pictures')
@@ -45,7 +46,20 @@ def create_comment(request):
   return redirect('picture_details', id=picture.id)
 
 def login_view(request):
-  form = LoginForm()
+  if request.method == 'POST':
+    form =LoginForm(request.POST)
+    if form.is_valid():
+      username = form.cleaned_data['username']
+      pw = form.cleaned_data['password']
+      user = authenticate(username=username, password=pw)
+      if user is not None:
+        login(request, user)
+        return redirect('home')
+      else:
+        form.add_error('username', 'Login failed')
+  else:
+    form = LoginForm()
+
   context = {
     'form': form
   }
