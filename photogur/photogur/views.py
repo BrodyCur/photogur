@@ -48,6 +48,8 @@ def create_comment(request):
   return redirect('picture_details', id=picture.id)
 
 def login_view(request):
+  if request.user.is_authenticated:
+    return redirect('home')
   if request.method == 'POST':
     form =LoginForm(request.POST)
     if form.is_valid():
@@ -73,6 +75,8 @@ def logout_view(request):
   return redirect('home')
 
 def signup(request):
+  if request.user.is_authenticated:
+    return redirect('home')
   if request.method == 'POST':
     form = UserCreationForm(request.POST)
     if form.is_valid():
