@@ -3,7 +3,7 @@ from django.urls import path
 from django.shortcuts import render, reverse, redirect
 from photogur.models import Picture, Comment
 from django.views.decorators.http import require_http_methods
-from photogur.forms import LoginForm
+from photogur.forms import LoginForm, PictureForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
@@ -83,6 +83,21 @@ def signup(request):
       return redirect('home')
   else:
     form = UserCreationForm()
-    
+
   response = render(request, 'signup.html', {'form': form})
   return HttpResponse(response)
+
+def new_picture(request):
+  if request.method == 'POST':
+    form = PictureForm(request.POST)
+    if form.is_valid():
+      picture = form.save(commit=False)
+      picture.user = request.user
+      picture.save()
+      return redirect('picture_details', id=picture.id)
+  else:
+    form = PictureForm()
+  context = {
+    'form': form
+  }
+  return render(request, 'createpic.html', context)

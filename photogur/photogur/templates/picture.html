@@ -3,6 +3,7 @@
 {% block content %}
   <h2 class="photo-title">{{ picture.title }}</h2>
   <h3 class="photo-artist">By: {{ picture.artist }}</h3>
+  <h3>Submitted By: {{ picture.user }}</h3>
   <div class="photo-wrapper">
     <img src="{{ picture.url }}" alt="{{ picture.title }}" />
   </div>
