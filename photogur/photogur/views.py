@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods
 from photogur.forms import LoginForm, PictureForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 def root(request):
   return HttpResponseRedirect('/pictures')
@@ -87,6 +88,7 @@ def signup(request):
   response = render(request, 'signup.html', {'form': form})
   return HttpResponse(response)
 
+@login_required
 def new_picture(request):
   if request.method == 'POST':
     form = PictureForm(request.POST)
