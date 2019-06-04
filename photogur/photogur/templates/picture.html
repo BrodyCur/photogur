@@ -9,7 +9,7 @@
   </div>
 
   {% if request.user == picture.user %}
-    <a href="{% url 'edit_picture' id=picture.pk %}">Edit Picutre</a>
+    <a href="{% url 'edit_picture' id=picture.pk %}">Edit Picture</a>
   {% endif %}
 
   <div class="comments-wrapper">

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Edit your picture</h2>
-<form action="" method="">
+<form action="{% url 'edit_picture' id=picture.id %}" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Edit</button>

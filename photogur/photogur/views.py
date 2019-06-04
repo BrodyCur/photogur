@@ -107,8 +107,15 @@ def new_picture(request):
 @login_required
 def edit_picture(request, id):
   picture = get_object_or_404(Picture, pk=id, user=request.user.pk)
-  form = PictureForm(instance=picture)
+  if request.method == 'POST':
+    form = PictureForm(request.POST, instance=picture)
+    if form.is_valid():
+      form.save()
+      return redirect('picture_details', id=picture.id)
+  else:
+    form = PictureForm(instance=picture)
   context = {
-    'form': form
-  }
+    'form': form,
+    'picture': picture
+    }
   return render(request, 'editpic.html', context)
